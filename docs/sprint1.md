@@ -65,26 +65,28 @@ At this point you should see all the hard-coded albums from `app.js`'s `sampleAl
 ```js
 $(document).ready(function() {
   console.log('app.js loaded!');
-
-  // prepare handlebars template
-  var albumHtml = $('#album-template').html();
-  var albumsTemplate = Handlebars.compile(albumHtml);
-
-  // make a get request for all albums
-  $.get('/api/albums').success(function (albums) {
-    albums.forEach(function(album) {
-      renderAlbum(album);
-    });
+  $.ajax({
+    method: 'GET',
+    url: '/api/albums',
+    success: renderMultipleAlbums
   });
 });
 
+function renderMultipleAlbums(albums) {
+  albums.forEach(function(album) {
+    renderAlbum(album);
+  });
+}
 
-// this function takes in a single album and renders it to the page
+// this function takes a single album and renders it to the page
 function renderAlbum(album) {
   console.log('rendering album', album);
+  var albumHtml = $('#album-template').html();
+  var albumsTemplate = Handlebars.compile(albumHtml);
   var html = albumsTemplate(album);
   $('#albums').prepend(html);
 }
+
 ```
 </details>
 
