@@ -39,7 +39,6 @@ function destroy(req, res) {
       res.send(404);
     }
   });
-
 }
 
 //app.put('/api/albums/:albumId/songs/:songId', controllers.albumsSongs.update);
