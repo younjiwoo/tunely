@@ -8,10 +8,11 @@
 
 $(document).ready(function() {
   console.log('app.js loaded!');
-  $.get('/api/albums').success(function (albums) {
-    albums.forEach(function(album) {
-      renderAlbum(album);
-    });
+
+  $.ajax({
+    method: 'GET',
+    url: '/api/albums',
+    success: renderMultipleAlbums
   });
 
   $('#album-form form').on('submit', function(e) {
@@ -25,13 +26,15 @@ $(document).ready(function() {
     $(this).trigger("reset");
   });
 
-
   // catch and handle the click on an add song button
   $('#albums').on('click', '.add-song', handleAddSongClick);
 
   // save song modal save button
   $('#saveSong').on('click', handleNewSongSubmit);
+
+  // delete album when its delete button is clicked
   $('#albums').on('click', '.delete-album', handleDeleteAlbumClick);
+
   $('#albums').on('click', '.edit-album', handleAlbumEditClick);
   $('#albums').on('click', '.save-album', handleSaveChangesClick);
 });
@@ -94,6 +97,7 @@ function handleAlbumUpdatedResponse(data) {
   $('[data-album-id=' + albumId + ']')[0].scrollIntoView();
 }
 
+// when a delete button for an album is clicked
 function handleDeleteAlbumClick(e) {
   var albumId = $(this).parents('.album').data('album-id');
   console.log('someone wants to delete album id=' + albumId );
@@ -111,7 +115,12 @@ function handleDeleteAlbumSuccess(data) {
   $('div[data-album-id=' + deletedAlbumId + ']').remove();
 }
 
-// this function takes a single album and renders it to the page
+function renderMultipleAlbums(albums) {
+  albums.forEach(function(album) {
+    renderAlbum(album);
+  });
+}
+
 function renderAlbum(album) {
   console.log('rendering album', album);
   var albumHtml = $('#album-template').html();
@@ -135,7 +144,6 @@ function handleNewSongSubmit(e) {
   var $modal = $('#songModal');
   var $songNameField = $modal.find('#songName');
   var $trackNumberField = $modal.find('#trackNumber');
-
   // get data from modal fields
   // note the server expects the keys to be 'name', 'trackNumber' so we use those.
   var dataToPost = {
