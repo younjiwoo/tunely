@@ -18,11 +18,10 @@ Full CRUD app with MongoDB, Mongoose, and Express.
 * Bootstrap grid system, forms, buttons
 * CRUD with mongoose for MongoDB
   * `find`, `findOne`, `new`, `save`, `remove`
-  * mongoose embedded data associations
-  * mongoose referenced data associations
-* Controllers using Node's module pattern (see [docs/controllers_example.md](docs/controllers_example.md) for an introduction)
+  * mongoose embedded data associations  
 
-## Other tools
+## New Tools and Patterns
+* Controllers using Node's module pattern (see [docs/controllers_example.md](docs/controllers_example.md) for an introduction)
 * Front-end package manager `bower` is used, but developers need not interact with it
   * components are automatically installed via an npm postinstall script
 * Bootstrap "modals"
@@ -34,16 +33,17 @@ Full CRUD app with MongoDB, Mongoose, and Express.
 This lab begins with a basic front-end to display a list of music albums.  As we progress through, we'll:
 
 * serve the album data from our server's `/api/` routes  
-* get the data from the server using ajax and display it on the page with jQuery  
+* get the data from the server using AJAX and display it on the page with jQuery  
 * retrieve the data from the database  
 * add functionality to create a new album  
 * add functionality to remove/delete an album  
 * add the ability to edit/update an album  
 * support storing song information (mongoose embedded)  
-* add another major resource with for artist information  (mongoose reference)  
 
 
-### Project Planning
+### Project Planning and Approach
+
+####Planning
 
 When working on large projects, it's important to do a good amount of planning and whiteboarding before you start coding.  
 
@@ -51,18 +51,17 @@ When working on large projects, it's important to do a good amount of planning a
 - The planning techniques and habits you develop here will be essential throughout your career as a web developer.    
 - Every successful company invests time in planning and design, and you should too!
 
-We're going to use **"outside-in development"** practices.  This means that we'll start by designing our UI (the outside).
-Then we'll move "inside" by connecting our UI to a server serving hard-coded data.  Next, we'll retrieve that data from a database.
+Typically when you work on a project, you'll start with a basic idea and do your initial development on paper or whiteboard. A number of software packages can will help you build wireframes, too. Remember, though, a wireframe should include simple diagrams of your site's layout and flow, not full mockups.
 
-We will also be breaking our work into short **sprints** with specific design goals.  This is another very common practice in the web development industry. In each sprint, we'll try to work outside-in.   
+In the wireframe below, you can see we're building a site that displays a list of musical albums.  It also has a jumbotron to introduce users to the page.  This is only our starting point; you'll be responsible for evolving it as we work through the lab.
 
-Let's start with a basic wireframe.  
+<img src="docs/assets/images/tunely_wireframe-1.png" width="40%">
 
-![simple layout of tunely homepage](docs/assets/images/tunely_wireframe-1.png)
+#### Outside-In
 
-Typically when you work on a project, you'll start with a basic idea and do your initial development on paper or whiteboard.  You can develop simple prototypes and "virtually" test your app with wireframes.  If good old fashioned paper or whiteboards aren't your thing, a number of software packages can will help you build wireframes. But remember: a wireframe should include simple diagrams of your site's layout and flow, not full mockups.
+We're going to use **"outside-in development"** practices.  This means that we'll start by designing our UI (the outside) with hard-coded data on the client side.  Then we'll move "inside" by connecting our UI to a server serving hard-coded data from the server files.  Next, we'll retrieve that data from a database. 
 
-In the wireframe above, you can see we're building a site that displays a list of musical albums.  It also has a jumbotron to introduce users to the page.  This is only our starting point; you'll be responsible for evolving it as we work through the lab.
+We will also be breaking our work into short **sprints** with specific design goals. Each sprint is organized in an outside-in manner.
 
 
 ## Getting Started
