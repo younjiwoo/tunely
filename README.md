@@ -103,6 +103,7 @@ One person will drive, and the other will navigate. The driver should fork and c
 
 At intervals, navigators will switch to work with a new driver.  After switching, discuss your recent work.  Start back from the point where you last **both** felt comfortable.  
 
+Later, we'll switch roles so navigators become drivers to continue the process!
 
 ## Sprints
 
@@ -135,8 +136,6 @@ At intervals, navigators will switch to work with a new driver.  After switching
 
 [Sprint 6: update song info & delete songs](/docs/sprint6.md)
 
-<!--
-### Module C: Full CRUD with Mongo and reference relationships. -->
 
 ## Using Tune.ly Solutions
 
