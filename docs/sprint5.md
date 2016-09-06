@@ -1,114 +1,84 @@
-# Sprint 6
+# Tune.ly Sprint 5
 
 ## Overview
 
-Now let's allow our users to update and delete songs.  We're going to create a new modal for the updating part.
+Let's allow users to edit album information.  
 
-Here's a rough idea of what the view could look like:
+This sprint we will:
 
-![Edit Songs Modal](/docs/assets/images/edit_songs.png)
+* make it so users can edit each album  
+* add a `PUT /api/albums/:id` route to the server
 
-> Make sure your modal's elements don't use the same ids as other modals on the page!
 
-Objectives:
+> Note: if you get stuck going through this, make use of the hints, your neighbors, and the solutions for sprint 5.
 
-* allow users to edit songs
-* allow users to delete songs
-* practice more with Bootstrap modals
+> You must complete all of the previous sprint before starting this sprint (excluding stretch challenges).
 
-> Howdy! Good work, partner!
-> If you're at sprint 6, you must be rarin' to go! We're gonna ask you to solve some problems on your own in this sprint.  
-![cowboy](https://m.popkey.co/e5a568/7grXg.gif)
+> In this sprint, you will probably notice the instructions are more succinct; we're hoping that you're starting to feel more comfortable and developing more resourcefulness and independence.  Still, if you get stuck, it's ok to ask for help.
 
-## Step 1: Modal for song updating.
+## Step 1: Edit Button
 
-Now might be a good time to take another look at the [bootstrap modal documentation](http://getbootstrap.com/javascript/#modals).
+We're going to add a button that allows our users to edit an album.
 
-We'll create another modal in `index.html`.  Each time someone clicks a button to edit songs, we'll give the modal the current songs' information.  This won't be too hard since we're just going to replace the modal body (on the sample below, look for `#editSongsModalBody`).
+1. Add a new button to each `panel-footer` in the Handlebars template.
 
-1. Add a new modal to the page.  You can build your own OR [use the sample provided](/docs/code_samples/sprint6_modal.html).
+  ```html
+  <button class='btn btn-info edit-album'>Edit Album</button>`
+  ```
 
-	> If you're using the sample, take a look at the unique ids created on the elements.  We'll be using those later on.
+1. Use jQuery to react to clicks on these buttons and determine the correct `album-id`.  Then `console.log` it.
 
-1. Add a new button 'Edit Songs' in the `panel-footer` of each album row.
+1. When the `Edit` button is clicked, replace it with a `Save Changes` button. Remember to reverse this change when the edit is finished.
 
-1. When 'Edit Songs' is clicked, open the modal!
+1. Also replace the major fields on the album with `input` elements.
 
-	<details><summary>hint: opening a modal with Bootstrap's JavaScript</summary>
 
-	```js
-	$('#fooModal').modal('show');
-	```
+Confused? How about a wire-frame from the UX department to sort things out:
 
-	</details>
+##### Before clicking on "Edit Album"
 
-## Step 2: Song List Edit/Delete Form(s)
+![before clicking edit album](assets/albums/tunely_edit_album_example.png)
 
-1. Develop a form for editing the song list.  It should be able to (1) delete a song (2) edit each song (see a possible layout image above).  Your form should be in a Handlebars template.  
+##### After clicking on "Edit Album"
 
-	> You can put the template anywhere in `index.html`.
+![after clicking edit album](assets/albums/tunely_edit_album_after_click_example.png)
 
-1. Remember that in order to do a `DELETE /api/albums/:album_id/songs/:id` or a `PUT /api/albums/:album_id/songs/:id` you'll need those `id`s.  Track them as `data-` attributes in your form.
 
-1. You may want to use a `GET /api/albums/:album_id/songs` index route to get all songs for a particular album.  This is likely easier than retrieving incomplete data from the page.
+> Hint: you could have 2 buttons in place already, 1) "Edit", 2) "Save changes" and simply toggle their visibility with [$.toggle](http://api.jquery.com/toggle/)
 
-	> Sample HTML for the form <a href="/docs/code_samples/sprint6_inline_form.html">is provided for you</a>.  You can use this to help you develop your template.
+> Note: this step could be a little tricky, especially if you want to display the current values in the input fields.  You'll have to get the text from the page, then replace the text with input elements.  
 
-  > If using the sample form or following the wireframe, note that you can make each row a separate form if you want.
 
-## Step 3: Delete and Update Implementation
+## Step 2: Client Side JavaScript
 
-1. Create the server-side route for `DELETE /api/albums/:album_id/songs/:id`.
+1. When `Save Changes` is clicked, handle that event on the client side.
 
-1. Write client-side JavaScript to delete a song from the form when the corresponding delete button is clicked. (Make sure the deleted text `<input>` is removed as well as the button.
+1. Prepare an AJAX call to the server at `PUT /api/albums/:id`.
 
-1. Test delete for songs.
 
-	> You may want [to read about subdocs](http://mongoosejs.com/docs/subdocs.html).  In particular, check out the section on finding subdocs and removing subdocs.
+## Step 3: Route
 
-1. Ensure that the song list on the page (the main album row that contains this song) is updated as well.
+1. Add the `app.put` method for the `/api/albums/:id` path on the server.  
 
-	> You may want to re-retrieve the songs rather than trying to parse the current album `<li>` content.
-	> It would be a good idea to make a function for this. It'll be useful in the next step.
+1. Use the album controller's `update` method as the callback. Ensure that it updates the album in the database.
 
-## Step 4: Update  
+#### Step 3.5: Display updated data.
 
-Let's allow users to save their edits.
 
-1. Create the server route and skeletal controller method for `PUT /api/albums/:album_id/songs/:id`.
+1. Make any final changes to your AJAX, and test everything.
 
-1. After the user clicks a 'Save' button, make an AJAX  request to edit the song.
+1. Make sure you are removing the form fields and replacing them with updated data from the server.
+  * You should do this when you get a response to your PUT request.
+  * Use the response data from the PUT request.
 
-1. Finish the code to handle the request on the server-side, if you haven't yet.
+> Hint: you already have a render function, ね(ne)?
 
-1. Update the page with the changed song.
-
-1. Make sure you test everything.
-
-1. Make sure the song list form modal closes when the close button is clicked.
-
-	> Ideally you would send each update, and after the responses for all the updates have been received; then you'd request the album and update the page.  This is a **super-super-stretch exercise and a really tough challenge** that would probably use a technology called promises.  Feel free to take the easier approach of just requesting the album and updating the page after every response to your PUT request.
-
-## Step 5: Modal Everything
-
-1. Add functionality so that the user can create new songs and have them added to the list from within the modal.
 
 
 ## Stretch Challenges
 
-1. Add a _saving_ spinner or animation for each song when it is saving.
+1. When one album edit is in progress, disable or hide the other edit buttons.
 
-1. Save each song when the user leaves its input box.
+1. Add a new modal for editing instead of letting the user make changes directly in the album row.
 
-1. Client-side validations: make sure `trackNumbers` are numbers & unique.  In displays, sort songs by `trackNumber`.
-
-1. Consider using a Bootstrap theme.
-
-1. Consider using Font Awesome.
-
-1. Server-side validations: make sure track numbers are unique within each album.  
-
-
-## Finally
-
-If you got this far, we are SUPER impressed.  Congratulations!
+1. Add a cancel button for the edits.
