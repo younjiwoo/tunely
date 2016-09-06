@@ -35,6 +35,7 @@ app.get('/', function homepage (req, res) {
  */
 
 app.get('/api', controllers.api.index);
+<<<<<<< HEAD
 
 app.get('/api/albums', controllers.albums.index);
 app.get('/api/albums/:albumId', controllers.albums.show);
@@ -44,6 +45,8 @@ app.put('/api/albums/:albumId', controllers.albums.update);
 
 app.post('/api/albums/:albumId/songs', controllers.albumsSongs.create);
 
+=======
+>>>>>>> master
 
 /**********
  * SERVER *
