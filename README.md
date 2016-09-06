@@ -3,7 +3,22 @@
 Full CRUD app with MongoDB, Mongoose, and Express.
 
 
-## Prerequisites:
+## Objectives
+
+This lab is all about practicing the skills you've been developing over the past few weeks. After completing this lab, developers will be able to...
+
+- work in a code base that they did not start from scratch
+- discuss code and approaches to other developers
+- create a JSON CRUD API on `/api` routes in an Express server
+- serve static content on non-`/api` routes in an Express server
+- make AJAX requests with jQuery
+- template JSON data with handlebars
+- create the client/server/database connections required for a full stack application
+
+
+## Prerequisites
+
+Before starting this lab, developers should have some familiarity with...
 
 * html `data-` attributes
 * jQuery, AJAX
@@ -20,12 +35,12 @@ Full CRUD app with MongoDB, Mongoose, and Express.
   * `find`, `findOne`, `new`, `save`, `remove`
   * mongoose embedded data associations  
 
+
 ## New Tools and Patterns
 * Controllers using Node's module pattern (see [docs/controllers_example.md](docs/controllers_example.md) for an introduction)
 * Front-end package manager `bower` is used, but developers need not interact with it
   * components are automatically installed via an npm postinstall script
 * Bootstrap "modals"
-
 
 
 ## Overview
@@ -39,6 +54,11 @@ This lab begins with a basic front-end to display a list of music albums.  As we
 * add functionality to remove/delete an album  
 * add the ability to edit/update an album  
 * support storing song information (mongoose embedded)  
+
+
+
+
+
 
 
 ### Project Planning and Approach
@@ -75,6 +95,13 @@ We will also be breaking our work into short **sprints** with specific design go
 1. Read the rest of this readme, then continue to Sprint 1.
 
 
+## Workflow
+
+You'll complete this lab in rotating pairs!  This is a challenging project, so remember the teamwork strategies you've built up recently.  
+
+One person will drive, and the other will navigate. The driver should fork and clone this repo. 
+
+At intervals, navigators will switch to work with a new driver.  After switching, discuss your recent work.  Start back from the point where you last **both** felt comfortable.  
 
 
 ## Sprints
