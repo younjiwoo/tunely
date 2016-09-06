@@ -8,10 +8,11 @@
 
 $(document).ready(function() {
   console.log('app.js loaded!');
-  $.get('/api/albums').success(function (albums) {
-    albums.forEach(function(album) {
-      renderAlbum(album);
-    });
+
+  $.ajax({
+    method: 'GET',
+    url: '/api/albums',
+    success: renderMultipleAlbums
   });
 
   $('#album-form form').on('submit', function(e) {
@@ -24,11 +25,14 @@ $(document).ready(function() {
     });
     $(this).trigger("reset");
   });
-
 });
 
+function renderMultipleAlbums(albums) {
+  albums.forEach(function(album) {
+    renderAlbum(album);
+  });
+}
 
-// this function takes a single album and renders it to the page
 function renderAlbum(album) {
   console.log('rendering album', album);
   var albumHtml = $('#album-template').html();
