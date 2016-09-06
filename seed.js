@@ -54,7 +54,7 @@ sampleSongs.push({ name: 'Tight Rope',
 });
 
 
-// populate each albums song list
+// add all songs to each album's song list
 albumList.forEach(function(album) {
   album.songs = sampleSongs;
 });
