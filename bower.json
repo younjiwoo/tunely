@@ -1,8 +1,9 @@
 {
   "name": "tunely",
-  "version": "0.0.0",
-  "homepage": "https://github.com/tgaff/tunely",
+  "version": "1.0.31",
+  "homepage": "https://github.com/sf-wdi-labs/tunely",
   "authors": [
+    "GA SF WDI",
     "tgaff <tgaff@alumni.nd.edu>"
   ],
   "license": "MIT",
@@ -14,8 +15,8 @@
     "tests"
   ],
   "dependencies": {
-    "jQuery": "2.2.1",
-    "bootstrap": "~3.3.6",
+    "jQuery": "3.1.0",
+    "bootstrap": "~3.3.7",
     "handlebars": "~4.0.5"
   }
 }
