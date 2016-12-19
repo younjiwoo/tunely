@@ -10,10 +10,6 @@ var bodyParser = require('body-parser');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// We'll serve jQuery and bootstrap from a local bower cache avoiding CDNs
-// We're placing these under /vendor to differentiate them from our own assets
-app.use('/vendor', express.static(__dirname + '/bower_components'));
-
 var controllers = require('./controllers');
 
 
