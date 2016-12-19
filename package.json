@@ -1,6 +1,6 @@
 {
   "name": "tunely",
-  "version": "1.0.31",
+  "version": "1.0.34",
   "description": "An app for tracking your music collection",
   "main": "server.js",
   "scripts": {

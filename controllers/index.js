@@ -1,3 +1,6 @@
-module.exports.api = require('./apiController');
-module.exports.albums = require('./albumsController');
-module.exports.albumsSongs = require('./albumsSongsController');
+
+module.exports = {
+  api: require('./apiController'),
+  albums: require('./albumsController'),
+  albumsSongs: require('./albumsSongscontroller')
+}
