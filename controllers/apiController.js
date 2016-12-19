@@ -1,12 +1,16 @@
 function index(req, res) {
   res.json({
     message: "Welcome to tunely!",
-    documentation_url: "https://github.com/tgaff/tunely/api.md",
-    base_url: "http://tunely.herokuapp.com",
+    documentation_url: "https://github.com/sf-wdi-labs/tunely",
+    base_url: "localhost:3000",
     endpoints: [
-      {method: "GET", path: "/api", description: "Describes available endpoints"}
+      {
+        method: "GET", path: "/api", description: "Describes available endpoints"
+      }
     ]
   });
 }
 
-module.exports.index = index;
+module.exports = {
+  index: index
+}
