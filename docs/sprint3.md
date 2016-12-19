@@ -42,10 +42,10 @@ We're going to create an embedded model for songs and embed it in albums.  We've
 
 1. Open the file and create a song schema with properties including:
 
-```js
-  name: String,
-  trackNumber: Number
-```
+  ```js
+    name: String,
+    trackNumber: Number
+  ```
 
 1. Use your schema to create a `Song` model.
 
@@ -67,6 +67,7 @@ We're going to use this same data for all albums for now, even though obviously 
 1. Copy the sample songs into `seed.js`.
 
 1. Write a `forEach` call to add the sample songs to every sample album in the array in `seed.js`.  
+
 1. Run `node seed.js`
 
 1. Fix any issues you encounter, until you can see that your seed file is also adding songs for each album.  
@@ -87,10 +88,7 @@ We'd like to list songs along with each album.  For now, keep this simple using 
 1. Modify the handlebars template in your HTML to include a portion that will fill in all the songs for the album. You won't need a new `<script>` tag since the song list will be a part of each album. Also, you shouldn't need to change the client-side code in `app.js` because it's already rendering the full album template.
 
 
-  Hint: use `#each` from Handlebars to template each song's track number and name.
-
-
-  > Check the solution for this step if you're struggling with the template.
+  Hint: You can use `#each` from Handlebars to template each song's track number and name, or you can use `forEach` in your JavaScript. The solution for this step uses `#each`; take a look at it if you're struggling with the template.
 
 1. Test to make sure this is working. Once your template is set, you should see the songs listed under each album on the page.
 
@@ -98,8 +96,9 @@ We'd like to list songs along with each album.  For now, keep this simple using 
 
 Now let's create the functionality to add new songs.  To do this, we're going to use a button to open a modal with some inputs. A "modal" section of the page is one that can be shown or hidden with a button and usually pops up over the rest of the content.
 
+The Bootstrap modal is already set up for you in `index.html` - but **check that the CDN bringing in Bootstrap is up to date**.  
 
-The Bootstrap modal is already setup for you in `index.html`.  We will have to add a button to each album to trigger its modal.  Also, since the same modal will be used for creating a song for _any_ album, we'll have to track which album we're supposed to be adding a song too.
+We will have to add a button to each album to trigger its modal.  Also, since the same modal will be used for creating a song for _any_ album, we'll have to track which album we're supposed to be adding a song too.
 
 
 We're going to track this by setting a `data` attribute called `album-id` on the modal itself.  We will set this attribute every time we display the modal.  
@@ -131,7 +130,7 @@ First, we need to make sure we have the album id so we can use it later.  To get
 
   [button inside panel footer](assets/images/sprint3_add_song_button.png).
 
-	<detail><summary>button code</summary>
+	<details><summary> click to see button code</summary>
 	```js
 	<div class='panel-footer'>
 	  <button class='btn btn-primary add-song'>Add Song</button>
@@ -140,15 +139,13 @@ First, we need to make sure we have the album id so we can use it later.  To get
 
     > CSS IDs must be unique, so we'll target each of these buttons with a compound CSS selector including the `add-song` class.
 
-	</detail>
+	</details>
 
 
 
 1. Use jQuery to bind an event handler to these buttons' click events.  Test it by having it `console.log` when there's a click.
 
 1. In your click event handler, get the current album row's `data-album-id` attribute.
-
-  > Hint: you may want to read the jQuery documentation for `parents` or `closest` and `data`.
 
   ```js
   $('#albums').on('click', '.add-song', function(e) {
@@ -158,20 +155,20 @@ First, we need to make sure we have the album id so we can use it later.  To get
   });
   ```
 
-  > This code might be new to you.  We've added a  CSS selector as a second argument to the `on` method.
-  > Because the `.add-song` element is not going to be on the page at document-ready, our event listener cannot bind to it at that time.
-  > Instead, we'll bind to something above it in the DOM tree, like `body` or `#albums`. As long as that element is on the page when we add our event listener, we will be able to capture the click. Then, if it's on an element with class `.add-song`, jQuery will trigger this event handler.
+
+  > This code might be new to you.  You may want to read the jQuery documentation for `parents` or `closest` and `data`.
+  > We've added a  CSS selector as a second argument to the `on` method. Because the `.add-song` element is not going to be on the page at document-ready, our event listener cannot bind to it at that time.  Instead, we'll bind to something above it in the DOM tree, like `body` or `#albums`. As long as that element is on the page when we add our event listener, we will be able to capture the click. Then, if it's on an element with class `.add-song`, jQuery will trigger this event handler.
 
 
 1.  Set the data attribute `album-id` on the `#songModal`.  We'll use this to keep track of which album the modal is referring to at any time.
 
-  <detail><summary>Hint: setting `data-album-id`</summary>
+  <details><summary>Hint: setting `data-album-id`</summary>
 
   ```js
-  $('#songModal').data('album-id', currentAlbumId);
+  $('#songModal').data('album-id', id);
   ```
 
-  </detail>
+  </details>
 
 1. You can open a Bootstrap modal by selecting it in jQuery and calling Bootstrap's `.modal()` function.  After setting the `data-album-id` attribute in your function, click your button to trigger the modal.  It should appear on screen!
 
@@ -183,7 +180,8 @@ We should now have a working modal that opens and closes, but it doesn't do anyt
 
 Let's add a function to handle saving a new song modal -- `POST` the input data as a new song. Here's pseudocode:
 
-	```pseudo
+	```
+  // pseudocode!
 	// call this when the save new song button is clicked
 	function handleNewSongSubmit(e) {
 	  e.preventDefault();
@@ -196,7 +194,7 @@ Let's add a function to handle saving a new song modal -- `POST` the input data 
 	}
 	```
 
-	> You don't have to fill in all of the code here just yet, read further.
+	> You don't have to fill in all of the code here yet, just think through the pseudocode above and move forward.
 
   > Note that this modal doesn't actually contain a form. It's generally better practice to use a full form and handle the submit event.
 
