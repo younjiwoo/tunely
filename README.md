@@ -3,7 +3,22 @@
 Full CRUD app with MongoDB, Mongoose, and Express.
 
 
-## Prerequisites:
+## Objectives
+
+This lab is all about practicing the skills you've been developing over the past few weeks. After completing this lab, developers will be able to...
+
+- work in a code base that they did not start from scratch
+- discuss code and approaches to other developers
+- create a JSON CRUD API on `/api` routes in an Express server
+- serve static content on non-`/api` routes in an Express server
+- make AJAX requests with jQuery
+- template JSON data with handlebars
+- create the client/server/database connections required for a full stack application
+
+
+## Prerequisites
+
+Before starting this lab, developers should have some familiarity with...
 
 * html `data-` attributes
 * jQuery, AJAX
@@ -20,10 +35,10 @@ Full CRUD app with MongoDB, Mongoose, and Express.
   * `find`, `findOne`, `new`, `save`, `remove`
   * mongoose embedded data associations  
 
+
 ## New Tools and Patterns
 * Controllers using Node's module pattern (see [docs/controllers_example.md](docs/controllers_example.md) for an introduction)
 * Bootstrap "modals"
-
 
 
 ## Overview
@@ -72,9 +87,21 @@ We will also be breaking our work into short **sprints** with specific design go
 1. Read the rest of this readme, then continue to Sprint 1.
 
 
+## Workflow
 
+You'll complete this lab in rotating pairs!  This is a challenging project, so remember the teamwork strategies you've built up recently.  
+
+One person will drive, and the other will navigate. The driver should fork and clone this repo.
+
+At intervals, navigators will switch to work with a new driver.  After switching, discuss your recent work.  Start back from the point where you last **both** felt comfortable.  
+
+Later, we'll switch roles so navigators become drivers to continue the process!
 
 ## Sprints
+
+### Sprint 0
+
+[Sprint 0: set up express server and back-end file structure](/docs/sprint0.md)
 
 ### Module A: Create and Read with Mongo and embedded model relationships.
 
@@ -105,8 +132,6 @@ We will also be breaking our work into short **sprints** with specific design go
 
 [Sprint 6: update song info & delete songs](/docs/sprint6.md)
 
-<!--
-### Module C: Full CRUD with Mongo and reference relationships. -->
 
 ## Using Tune.ly Solutions
 
