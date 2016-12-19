@@ -22,8 +22,6 @@ Full CRUD app with MongoDB, Mongoose, and Express.
 
 ## New Tools and Patterns
 * Controllers using Node's module pattern (see [docs/controllers_example.md](docs/controllers_example.md) for an introduction)
-* Front-end package manager `bower` is used, but developers need not interact with it
-  * components are automatically installed via an npm postinstall script
 * Bootstrap "modals"
 
 
@@ -68,8 +66,7 @@ We will also be breaking our work into short **sprints** with specific design go
 
 1. Fork and clone this repository, and `cd` into your local copy.
 1. Run `npm install`, which will:
-  * install back-end packages from package.json AND
-  * install front-end libraries from bower.json as a "postinstall" action
+  * install back-end packages from package.json
 1. Start the server with `node server.js`, `npm start`, or `nodemon`.
 1. View the site at `localhost:3000`.
 1. Read the rest of this readme, then continue to Sprint 1.
