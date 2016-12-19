@@ -122,12 +122,7 @@ We'll use the module pattern to make these "controller" functions available in t
 
 1. Update the `index` function to respond with JSON for all the albums.
 
-1. In `app.js`, use AJAX to get the albums.  Render them on the page.
-
-1. You should be able to safely delete the hard-coded data in `app.js` now!
-
-> The data in `server.js` and `app.js` is different. This should make it easier to see which data is being rendered on your page.
-
+1. The `$.ajax` call in `app.js` should be functional now! Check in the browser to see that your server-side data is rendering and that the error messages aren't showing up anymore.
 
 ## Step 3: Database Setup
 
