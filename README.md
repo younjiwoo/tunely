@@ -38,8 +38,6 @@ Before starting this lab, developers should have some familiarity with...
 
 ## New Tools and Patterns
 * Controllers using Node's module pattern (see [docs/controllers_example.md](docs/controllers_example.md) for an introduction)
-* Front-end package manager `bower` is used, but developers need not interact with it
-  * components are automatically installed via an npm postinstall script
 * Bootstrap "modals"
 
 
@@ -54,11 +52,6 @@ This lab begins with a basic front-end to display a list of music albums.  As we
 * add functionality to remove/delete an album  
 * add the ability to edit/update an album  
 * support storing song information (mongoose embedded)  
-
-
-
-
-
 
 
 ### Project Planning and Approach
@@ -79,7 +72,7 @@ In the wireframe below, you can see we're building a site that displays a list o
 
 #### Outside-In
 
-We're going to use **"outside-in development"** practices.  This means that we'll start by designing our UI (the outside) with hard-coded data on the client side.  Then we'll move "inside" by connecting our UI to a server serving hard-coded data from the server files.  Next, we'll retrieve that data from a database. 
+We're going to use **"outside-in development"** practices.  This means that we'll start by designing our UI (the outside) with hard-coded data on the client side.  Then we'll move "inside" by connecting our UI to a server serving hard-coded data from the server files.  Next, we'll retrieve that data from a database.
 
 We will also be breaking our work into short **sprints** with specific design goals. Each sprint is organized in an outside-in manner.
 
@@ -88,8 +81,7 @@ We will also be breaking our work into short **sprints** with specific design go
 
 1. Fork and clone this repository, and `cd` into your local copy.
 1. Run `npm install`, which will:
-  * install back-end packages from package.json AND
-  * install front-end libraries from bower.json as a "postinstall" action
+  * install back-end packages from package.json
 1. Start the server with `node server.js`, `npm start`, or `nodemon`.
 1. View the site at `localhost:3000`.
 1. Read the rest of this readme, then continue to Sprint 1.
@@ -99,7 +91,7 @@ We will also be breaking our work into short **sprints** with specific design go
 
 You'll complete this lab in rotating pairs!  This is a challenging project, so remember the teamwork strategies you've built up recently.  
 
-One person will drive, and the other will navigate. The driver should fork and clone this repo. 
+One person will drive, and the other will navigate. The driver should fork and clone this repo.
 
 At intervals, navigators will switch to work with a new driver.  After switching, discuss your recent work.  Start back from the point where you last **both** felt comfortable.  
 
