@@ -10,21 +10,13 @@ This sprint we will:
 
 ## Step 0:
 
-Now would be a great time to explore the files provided for you.  In particular, note:
-* the html in `views/index.html`
-* the incomplete server in `server.js`
-* the included `package.json`
+Check your work from sprint 0 by referencing the solutions on GitHub. In particular, pay attention to:
 
-### Workflow Tips
-
-- Use `nodemon` or `node server.js` to run your server.  
-
-- Continually verify that your browser console is displaying the `app.js loaded!` message on document-ready.
-
-- Check for error messages in both the terminal where your server is running and in the browser console.
-
-- Start your work on a new branch (`git checkout -b my_sprint1`).  Add and commit your change frequently -- **at least once per step**!
-
+* the updated links to JavaScript, CSS, and image files in `views/index.html` and `public/styles/styles.css`
+* `package.json`
+* `server.js`
+* `models/`
+* `controllers/`
 
 ## Step 1: Display hard-coded data.
 
@@ -120,7 +112,7 @@ We'll use the module pattern to make these "controller" functions available in t
 ## Step 3: Database Setup
 
 
-1. Use `npm` to install `mongoose`.  Save it as a dependency of your project with `--save`.
+1. If you haven't yet, use `npm` to install `mongoose`.  Save it as a dependency of your project with `--save`.
 
 1. In `models/album.js`, add a schema and a model for our albums.  Determine the attributes and data types for the schema based on the sample data we've been using.
 
