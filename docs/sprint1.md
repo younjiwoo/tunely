@@ -57,12 +57,14 @@ Let's start on the outside and work our way in.
 <details><summary>Click to see how to request and render all of the albums with handlebars</summary>
 
 ```js
+var albumsTemplate;
+
 $(document).ready(function() {
   console.log('app.js loaded!');
 
   // prepare handlebars template
   var albumHtml = $('#album-template').html();
-  var albumsTemplate = Handlebars.compile(albumHtml);
+  albumsTemplate = Handlebars.compile(albumHtml);
 
   // make a get request for all albums
   $.ajax({
@@ -87,7 +89,7 @@ function handleError(err){
 function renderAlbum(album) {
   console.log('rendering album', album);
   var htmlToAppend = albumsTemplate(album);
-  $('#albums').prepend(html);
+  $('#albums').prepend(htmlToAppend);
 };
 
 ```
