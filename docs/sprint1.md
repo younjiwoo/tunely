@@ -47,10 +47,12 @@ Let's start on the outside and work our way in.
 
 1. Update your code to use **all** the sample albums in the `sampleAlbums` array by rendering each one individually and adding it to the page.  Try to use `sampleAlbums.forEach` to call `renderAlbum` on each album.
 
-  > Note that we could use Handlebar's templates `#each` method and pass it all the albums at once. However, we're planning to be able to add individual albums later on, so we'll need the ability to render each album individually.  Having two separate render functions and templates (1 for individual albums, 1 for all albums) seems excessive at this point.  
+   > Note that we could use Handlebar's templates `#each` method and pass it all the albums at once. However, we're planning to be able to add individual albums later on, so we'll need the ability to render each album individually.  Having two separate render functions and templates (1 for individual albums, 1 for all albums) seems excessive at this point.  
 
 
-At this point you should see all the hard-coded albums from `app.js`'s `sampleAlbums` rendered on page, and the original hard-coded album should be gone.  
+  At this point you should see all the hard-coded albums from `app.js`'s `sampleAlbums` rendered on page.
+
+1. Now, we're going to break this piece of code again, with the intention of fixing it by improving our server side routes. **Add an AJAX call** that will GET all of the albums from the path `/api/albums`. Upon a successful response from the server, this AJAX call should render the data to the page. 
 
 <details><summary>Click to see how to request and render all of the albums with handlebars</summary>
 
@@ -63,22 +65,40 @@ $(document).ready(function() {
   var albumsTemplate = Handlebars.compile(albumHtml);
 
   // make a get request for all albums
-  $.get('/api/albums').success(function (albums) {
-    albums.forEach(function(album) {
-      renderAlbum(album);
-    });
+  $.ajax({
+    method: 'GET',
+    url: '/api/albums',
+    success: handleSuccess,
+    error: handleError
   });
 });
 
+function handleSuccess (albums) {
+    albums.forEach(function(album) {
+      renderAlbum(album);
+    });
+};
+
+function handleError(err){
+  console.log('There has been an error: ', err);
+}
 
 // this function takes in a single album and renders it to the page
 function renderAlbum(album) {
   console.log('rendering album', album);
-  var html = albumsTemplate(album);
+  var htmlToAppend = albumsTemplate(album);
   $('#albums').prepend(html);
-}
+};
+
 ```
 </details>
+
+Because the GET `/api/albums` route isn't configured yet, our site won't display data anymore. You should now see an error in your console:
+
+![image](https://cloud.githubusercontent.com/assets/6520345/21326987/da46d312-c5e1-11e6-90ee-d352bdd65a4e.png)
+
+Let's fix it by working on the server side to get that route working!
+
 
 ## Step 2: Albums Index
 
