@@ -99,6 +99,10 @@ Later, we'll switch roles so navigators become drivers to continue the process!
 
 ## Sprints
 
+### Sprint 0
+
+[Sprint 0: set up express server and back-end file structure](/docs/sprint0.md)
+
 ### Module A: Create and Read with Mongo and embedded model relationships.
 
 #### Sprint 1
