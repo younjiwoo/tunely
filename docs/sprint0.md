@@ -165,7 +165,7 @@ You've already been using Node.js's modules to bring code for database models in
   ```js
   // controllers/apiController.js
   module.exports = {
-    index: index;
+    index: index
   }
   ```
 
