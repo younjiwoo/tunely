@@ -165,26 +165,6 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
-    <!-- template for editing / deleting a song -->
-    <script id='song-edit-template' type='text/x-handlebars-template'>
-      {{#each songs}}
-      <!-- confused by ../albumId ?  See:
-      http://stackoverflow.com/questions/12297959/access-properties-of-the-parent-with-a-handlebars-each-loop#12297980
-      -->
-      <form class="form-inline" id="{{_id}}" data-album-id="{{../albumId}}" >
-        <div class="form-group">
-          <input type="text" class="form-control song-trackNumber" value="{{trackNumber}}">
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control song-name" value="{{name}}">
-        </div>
-        <div class="form-group">
-          <button class="btn btn-danger" data-song-id="{{_id}}">x</button>
-        </div>
-      </form>
-      {{/each}}
-    </script>
   </body>
 
 

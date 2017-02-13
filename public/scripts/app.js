@@ -153,17 +153,32 @@ function handleEditSongsClick(e) {
   });
 }
 
+function buildEditSongsForms(songs, albumId) {
+  // create a edit form for each song, using the same albumId for all of them
+  var songEditFormHtmlStrings = songs.map(function(song){
+    return (`
+      <form class="form-inline" id="${song._id}" data-album-id="${albumId}" >
+        <div class="form-group">
+          <input type="text" class="form-control song-trackNumber" value="${song.trackNumber}">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control song-name" value="${song.name}">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-danger" data-song-id="${song._id}">x</button>
+        </div>
+      </form>
+    `);
+  });
+
+  return songEditFormHtmlStrings.join(""); // combine all the forms into a single string
+}
+
 // takes an array of songs and generates an EDIT form for them
 function populateEditSongsModal(songs, albumId) {
-  // prep the template
-  var templateHtml = $('#song-edit-template').html();
-  var template = Handlebars.compile(templateHtml);
-  // use the template's #each to render all songs at once
-  // note that DELETE/PUT will need the albumId to construct the URL,
-  //   so we'll plant that on the form too
-  songsForms = template({songs: songs, albumId: albumId});
+  var editSongsFormsHtml = buildEditSongsForms(songs, albumId);
   // find the modal's body and replace it with the generated html
-  $('#editSongsModalBody').html(songsForms);
+  $('#editSongsModalBody').html(editSongsFormsHtml);
 }
 
 // when the edit button for an album is clicked
