@@ -32,7 +32,7 @@ Now would be a great time to explore the files provided for you.  In particular,
 
 ## Step 1: Server basic setup.
 
-A front-end skeleton is already in place (you can view it by opening `index.html` in your browser).  To get started serving that front-end, we need a server.
+A front-end skeleton is already in place (you can view it directly from your file system by opening `index.html` in your browser). To actually _serve_ that front-end so that it works correctly, we need to setup and run a server!
 
 1. Run `npm init` to create a `package.json` file. Specify at least the following fields:
 
@@ -78,7 +78,7 @@ A front-end skeleton is already in place (you can view it by opening `index.html
 
   Curious about what this does? Try logging `__dirname` to your console.
 
-  > If you restart your server now and visit 'localhost:3000' in the browser, you'll notice the site now shows the contents of the html file. From now on, **do not visit your site by opening `index.html` in the browser.** Visit it by making a request to the correct URL.
+  > If you restart your server now and visit 'localhost:3000' in the browser, you'll notice the site now shows the contents of the html file. From now on, **do not visit your site by opening `index.html` in the browser.** Visit it by making a request to the correct URL (`localhost:3000/`).
 
   > Your page should show missing JavaScript and CSS.  We will fix that by serving the contents of the `public` directory from the server as well.
 
