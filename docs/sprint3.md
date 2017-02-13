@@ -85,10 +85,9 @@ We'd like to list songs along with each album.  For now, keep this simple using 
 </li>
 ```
 
-1. Modify the handlebars template in your HTML to include a portion that will fill in all the songs for the album. You won't need a new `<script>` tag since the song list will be a part of each album. Also, you shouldn't need to change the client-side code in `app.js` because it's already rendering the full album template.
+1. Modify the HTML template string to include a section listing all the songs in the album. To simplify this process, consider building up your list of songs outside of the template.
 
-
-  Hint: You can use `#each` from Handlebars to template each song's track number and name, or you can use `forEach` in your JavaScript. The solution for this step uses `#each`; take a look at it if you're struggling with the template.
+  Hint: You can use the array method `.join()` to quickly combine all the song names, but a better solution would probably involve first using `.map` to build up an array of HTML strings (e.g. `["- (1) Swamped", "- (2) Heaven's a Lie"]`) before joining them together.
 
 1. Test to make sure this is working. Once your template is set, you should see the songs listed under each album on the page.
 
@@ -118,7 +117,7 @@ function handleNewSongButtonClick() {
 
 First, we need to make sure we have the album id so we can use it later.  To get started, we'll set a `data` attribute on each album row with its ID.
 
-1. In the template HTML for each album, add a new `data-album-id` attribute to the top `<div class='row album'>`.
+1. In the album template string, add a new `data-album-id` attribute to the top `<div class='row album'>`.
 
 1. Set the value of that attribute to `album._id`.
 
