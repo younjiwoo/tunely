@@ -74,6 +74,7 @@ A front-end skeleton is already in place (you can view it by opening `index.html
   // inside the GET / route
   res.sendFile('views/index.html' , { root : __dirname});
   ```
+  </details>
 
   Curious about what this does? Try logging `__dirname` to your console.
 
