@@ -44,9 +44,7 @@ We'll create another modal in `index.html`.  Each time someone clicks a button t
 
 ## Step 2: Song List Edit/Delete Form(s)
 
-1. Develop a form for editing the song list.  It should be able to (1) delete a song (2) edit each song (see a possible layout image above).  Your form should be in a Handlebars template.  
-
-	> You can put the template anywhere in `index.html`.
+1. Develop a form for editing the song list.  It should be able to (1) delete a song (2) edit each song (see a possible layout image above).  Your form should be an HTML template string in your javascript.
 
 1. Remember that in order to do a `DELETE /api/albums/:album_id/songs/:id` or a `PUT /api/albums/:album_id/songs/:id` you'll need those `id`s.  Track them as `data-` attributes in your form.
 
