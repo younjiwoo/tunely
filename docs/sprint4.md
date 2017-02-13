@@ -16,7 +16,7 @@ This sprint we will:
 
 Once again, let's start on the front end by adding a button to delete an album.  
 
-1. Add another button to the `panel-footer` of the Handlebars template.
+1. Add another button to the `panel-footer` of the album template string.
 
 1. Use jQuery to listen for the `click` event for the button.
 
