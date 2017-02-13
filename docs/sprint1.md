@@ -22,13 +22,11 @@ Check your work from sprint 0 by referencing the solutions on GitHub. In particu
 
 Let's start on the outside and work our way in.  
 
-1. Open `index.html` in your text editor and find the HTML for an **album**.  This is a hard-coded sample set up for you to show the desired HTML structure.  Convert this into a handlebars template using the data structure shown in the array of albums from `app.js`. Leave the`div` with class `albums` in place.
+1. Open `index.html` in your text editor and find the HTML for an **album**.  This is a hard-coded sample set up for you to show the desired HTML structure.  Convert this into a template string using the data structure shown in the array of albums from `app.js`. Leave the `div` with class `albums` in place.
 
-  <details><summary>hint</summary>You'll need to wrap the album template inside a `<script>` tag.  Then replace the sample data with appropriate attribute placeholders.  (You can find the correct attributes in the array of objects provided in `app.js`.) Remember the handlebars syntax for a variable whose value will be inserted later: `{{variableName}}`. </details>
+  <details><summary>hint</summary>You'll need to replace the hardcoded sample data with appropriate attribute placeholders.  (You can find the correct attributes in the array of objects provided in `app.js`.) Remember the template string syntax for a variable whose value will be inserted later: ``\`${variableName}\``. </details>
 
-1. Open `app.js` and edit the function `renderAlbum` to display one album on the page.  Use the handlebars template.
-
-  <details><summary>hint</summary>You'll need to select the handlebars script you created, pull the source html from inside it, and compile it into a template function.  Use your template function to create an HTML string with the album's attributes filled in, and finally use jQuery to add it to the page.</details>
+1. Open `app.js` and edit the function `renderAlbum` to display one album on the page.  Use your HTML template string and jQuery.
 
 1. Run the `renderAlbum` function when the DOM is ready, and pass in `sampleAlbums[0]` (just one album) to test.  Verify that the page still looks like it did initially.
 
@@ -47,24 +45,15 @@ Let's start on the outside and work our way in.
 
 1. Update your code to use **all** the sample albums in the `sampleAlbums` array by rendering each one individually and adding it to the page.  Try to use `sampleAlbums.forEach` to call `renderAlbum` on each album.
 
-   > Note that we could use Handlebar's templates `#each` method and pass it all the albums at once. However, we're planning to be able to add individual albums later on, so we'll need the ability to render each album individually.  Having two separate render functions and templates (1 for individual albums, 1 for all albums) seems excessive at this point.  
-
-
   At this point you should see all the hard-coded albums from `app.js`'s `sampleAlbums` rendered on page.
 
 1. Now, we're going to break this piece of code again, with the intention of fixing it by improving our server side routes. **Add an AJAX call** that will GET all of the albums from the path `/api/albums`. Upon a successful response from the server, this AJAX call should render the data to the page. 
 
-<details><summary>Click to see how to request and render all of the albums with handlebars</summary>
+<details><summary>Click to see how to request and render all of the albums with a template string</summary>
 
 ```js
-var albumsTemplate;
-
 $(document).ready(function() {
   console.log('app.js loaded!');
-
-  // prepare handlebars template
-  var albumHtml = $('#album-template').html();
-  albumsTemplate = Handlebars.compile(albumHtml);
 
   // make a get request for all albums
   $.ajax({
@@ -88,7 +77,34 @@ function handleError(err){
 // this function takes in a single album and renders it to the page
 function renderAlbum(album) {
   console.log('rendering album', album);
-  var htmlToAppend = albumsTemplate(album);
+  var htmlToAppend = (`
+    <div class='row'>
+      <div class="col-md-3 col-xs-12 thumbnail album-art">
+        <img src="images/800x800.png" alt="album image">
+      </div>
+
+      <div class="col-md-9 col-xs-12">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <h4 class='inline-header'>Album Name:</h4>
+            <span class='album-name'>${album.name}</span>
+          </li>
+
+          <li class="list-group-item">
+            <h4 class='inline-header'>Artist Name:</h4>
+            <span class='artist-name'>${album.artistName}</span>
+          </li>
+
+          <li class="list-group-item">
+            <h4 class='inline-header'>Released date:</h4>
+            <span class='album-releaseDate'>${album.releaseDate}</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  `);
+
   $('#albums').prepend(htmlToAppend);
 };
 

@@ -20,10 +20,10 @@ This sprint we will:
 
 We're going to add a button that allows our users to edit an album.
 
-1. Add a new button to each `panel-footer` in the Handlebars template.
+1. Add a new button to each `panel-footer` in the album template string.
 
   ```html
-  <button class='btn btn-info edit-album'>Edit Album</button>`
+  <button class='btn btn-info edit-album'>Edit Album</button>
   ```
 
 1. Use jQuery to react to clicks on these buttons and determine the correct `album-id`.  Then `console.log` it.
