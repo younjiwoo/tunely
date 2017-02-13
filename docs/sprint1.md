@@ -24,7 +24,7 @@ Let's start on the outside and work our way in.
 
 1. Open `index.html` in your text editor and find the HTML for an **album**.  This is a hard-coded sample set up for you to show the desired HTML structure.  Convert this into a template string using the data structure shown in the array of albums from `app.js`. Leave the `div` with class `albums` in place.
 
-  <details><summary>hint</summary>You'll need to replace the hardcoded sample data with appropriate attribute placeholders.  (You can find the correct attributes in the array of objects provided in `app.js`.) Remember the template string syntax for a variable whose value will be inserted later: ``\`${variableName}\``. </details>
+  <details><summary>hint</summary>You'll need to replace the hardcoded sample data with appropriate attribute placeholders.  (You can find the correct attributes in the array of objects provided in `app.js`.) Remember the template string syntax for a variable whose value will be inserted later: `${variableName}`. </details>
 
 1. Open `app.js` and edit the function `renderAlbum` to display one album on the page.  Use your HTML template string and jQuery.
 
