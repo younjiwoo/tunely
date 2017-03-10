@@ -19,7 +19,12 @@ function create(req, res) {
 
   // split at comma and remove and trailing space
   var genres = req.body.genres.split(',').map(function(item) { return item.trim(); } );
+  var songs = req.body.songs.split(',').map(function(item, index) {
+    return {
+    trackNumber: index,
+    name: item.trim()}} );
   req.body.genres = genres;
+  req.body.songs = songs;
 
   db.Album.create(req.body, function(err, album) {
     if (err) { console.log('error', err); }
