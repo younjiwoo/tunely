@@ -22,17 +22,55 @@ Check your work from sprint 0 by referencing the solutions on GitHub. In particu
 
 Let's start on the outside and work our way in.  
 
-1. Open `index.html` in your text editor and find the HTML for an **album**.  This is a hard-coded sample set up for you to show the desired HTML structure.  Convert this into a handlebars template using the data structure shown in the array of albums from `app.js`. Leave the`div` with class `albums` in place.
+1. Open `index.html` in your text editor and find the HTML for a single **album**.  This is a hard-coded sample set up for you to show the desired HTML structure.  Convert this into an html template named `albumHtml` inside the `renderAlbum` function in `app.js`. Leave the`div` with class `albums` in place.
 
-  <details><summary>hint</summary>You'll need to wrap the album template inside a `<script>` tag.  Then replace the sample data with appropriate attribute placeholders.  (You can find the correct attributes in the array of objects provided in `app.js`.) Remember the handlebars syntax for a variable whose value will be inserted later: `{{variableName}}`. </details>
+Your element with template strings should look like this:
+  
+  
+```javascript  
+var albumHtml = (`
+            <!-- one album -->
+            <div class='row album' data-album-id='${album.id}'>
+              <div class='col-md-10 col-md-offset-1'>
+                <div class='panel panel-default'>
+                  <div class='panel-body'>
+                  <!-- begin album internal row -->
+                    <div class='row'>
+                      <div class='col-md-3 col-xs-12 thumbnail album-art'>
+                         <img src='${album.image}' alt='album image'>
+                      </div>
+                      <div class='col-md-9 col-xs-12'>
+                        <ul class='list-group'>
+                          <li class='list-group-item'>
+                            <h4 class='inline-header'>Album Name:</h4>
+                            <span class='album-name'>${album.name}</span>
+                        </li>
+                          <li class='list-group-item'>
+                            <h4 class='inline-header'>Artist Name:</h4>
+                            <span class='artist-name'>${album.artistName}</span>
+                          </li>
+                       <li class='list-group-item'>
+                            <h4 class='inline-header'>Released date:</h4>
+                            <span class='album-name'>${album.releaseDate}</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- end of album internal row -->
+                  </div>
+                  <div class='panel-footer'>
+                  </div>
+                </div>
+              </div>
+              <!-- end one album -->
+    `)
 
-1. Open `app.js` and edit the function `renderAlbum` to display one album on the page.  Use the handlebars template.
+```
+Inside the `renderAlbum` function, append this `albumHtml` string with the template strings populated  into your `#album` div tag with jQuery.
 
-  <details><summary>hint</summary>You'll need to select the handlebars script you created, pull the source html from inside it, and compile it into a template function.  Use your template function to create an HTML string with the album's attributes filled in, and finally use jQuery to add it to the page.</details>
 
-1. Run the `renderAlbum` function when the DOM is ready, and pass in `sampleAlbums[0]` (just one album) to test.  Verify that the page still looks like it did initially.
+To render the **first** element of the array, try this out:
 
-  <details><summary>hint: calling `renderAlbum`</summary>
 
   ```js
   $(document).ready(function() {
@@ -40,45 +78,22 @@ Let's start on the outside and work our way in.
     renderAlbum(sampleAlbums[0]);
   });
   ```
-  </details>
+
+
+
+
+
+
 
 
 ## Step 1.5: Rendering all the albums.
 
-1. Update your code to use **all** the sample albums in the `sampleAlbums` array by rendering each one individually and adding it to the page.  Try to use `sampleAlbums.forEach` to call `renderAlbum` on each album.
-
-  > Note that we could use Handlebar's templates `#each` method and pass it all the albums at once. However, we're planning to be able to add individual albums later on, so we'll need the ability to render each album individually.  Having two separate render functions and templates (1 for individual albums, 1 for all albums) seems excessive at this point.  
+1. Update your code to use **all** the sample albums in the `sampleAlbums` array by rendering each one individually and adding it to the page.  Try to use `sampleAlbums.forEach` to call `renderAlbum` on each album. 
 
 
 At this point you should see all the hard-coded albums from `app.js`'s `sampleAlbums` rendered on page, and the original hard-coded album should be gone.  
 
-<details><summary>Click to see how to request and render all of the albums with handlebars</summary>
 
-```js
-$(document).ready(function() {
-  console.log('app.js loaded!');
-
-  // prepare handlebars template
-  var albumHtml = $('#album-template').html();
-  var albumsTemplate = Handlebars.compile(albumHtml);
-
-  // make a get request for all albums
-  $.get('/api/albums').success(function (albums) {
-    albums.forEach(function(album) {
-      renderAlbum(album);
-    });
-  });
-});
-
-
-// this function takes in a single album and renders it to the page
-function renderAlbum(album) {
-  console.log('rendering album', album);
-  var html = albumsTemplate(album);
-  $('#albums').prepend(html);
-}
-```
-</details>
 
 ## Step 2: Albums Index
 
