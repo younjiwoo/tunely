@@ -25,10 +25,10 @@ Let's start on the outside and work our way in.
 1. Open `index.html` in your text editor and find the HTML for a single **album**.  This is a hard-coded sample set up for you to show the desired HTML structure.  Convert this into an html template named `albumHtml` inside the `renderAlbum` function in `app.js`. Replace the hardcoded album information with the album object's attributes.  Here's an example: 
 
 ```js
-    <li class='list-group-item'>
+    `<li class='list-group-item'>
       <h4 class='inline-header'>Album Name:</h4>
       <span class='album-name'>${album.name}</span>
-    </li>
+    </li>`
 ```
 
 Notice the object attribute is surrounded by curly braces and starts with a peso. This is a string literal.  When we wrap this entire string template in ticks.  Javascript automagically knows to populate these object 'placeholders' with your object attributes. Neato!
