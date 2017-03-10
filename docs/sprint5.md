@@ -60,7 +60,7 @@ We're going to add a button that allows our users to edit an album.
   * You should do this when you get a response to your PUT request.
   * Use the response data from the PUT request.
 
-> Hint: you already have a render function, ね(ne)?
+> Hint: you already have a render function
 
 
 
