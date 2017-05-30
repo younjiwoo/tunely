@@ -51,7 +51,7 @@ A front-end skeleton is already in place (you can view it directly from your fil
   ```bash
   npm install --save express body-parser mongoose
   ```
-  
+
   </details>
 
   > Confirm that the packages have been saved as dependencies in your `package.json`.
@@ -115,11 +115,13 @@ Time to prepare a file structure for pulling data from an API!
 2. In `models/index.js`, require mongoose and connect to a database for the tunely app.
 
   <details><summary>click to see a code reminder</summary>
+
   ```js
   // models/index.js
   var mongoose = require("mongoose");
   mongoose.connect("mongodb://localhost/tunely");
   ```
+
   </details>
 
 3. In `models/album.js`, require mongoose and, if you'd like, set up a shorthand `Schema` variable to stand in for `mongoose.Schema`.
