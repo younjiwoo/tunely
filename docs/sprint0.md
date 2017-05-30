@@ -44,7 +44,7 @@ A front-end skeleton is already in place (you can view it directly from your fil
 
   > Confirm that this information is set in your `package.json`.
 
-1. Install and save `express`, `body-parser`, and `mongoose` Node.js packages.  
+2. Install and save `express`, `body-parser`, and `mongoose` Node.js packages.  
 
   <details><summary>click for code to run in terminal</summary>
   ```bash
@@ -54,7 +54,7 @@ A front-end skeleton is already in place (you can view it directly from your fil
 
   > Confirm that the packages have been saved as dependencies in your `package.json`.
 
-1. Create a `server.js` file.  In this file:
+3. Create a `server.js` file.  In this file:
   - `require` Express
   - create an Express app
   - add a route so your server will respond to `GET /` with a simple message
@@ -62,7 +62,7 @@ A front-end skeleton is already in place (you can view it directly from your fil
 
   > It's okay if you need to reference code for this steps! Check the sprint 0 solutions branch or see recent notes and projects.
 
-1. Start your server, and make sure you see your message when you visit the `/` route.
+4. Start your server, and make sure you see your message when you visit the `/` route.
 
 
 ## Step 2: Serving the HTML views from Express.
@@ -70,10 +70,12 @@ A front-end skeleton is already in place (you can view it directly from your fil
 1. We're going to serve `index.html` on the root route, `/`, so change the current GET `/` route from serving your message to sending the `index.html` file.
 
   <details><summary>hint: click for code</summary>
+
   ```
   // inside the GET / route
   res.sendFile('views/index.html' , { root : __dirname});
   ```
+
   </details>
 
   Curious about what this does? Try logging `__dirname` to your console.
@@ -93,13 +95,13 @@ A front-end skeleton is already in place (you can view it directly from your fil
 
   > This serves the files and directories inside `public` "next to" `index.html`, so `index.html` will be able to access everything inside `public` as if `index.html` were in the `public` directory, too.
 
-1. Reconnect the client-side JavaScript to your view by updating the `script` tag in `index.html`.  Get a sanity check log message from your `app.js` to appear in your browser dev tools console.
+2. Reconnect the client-side JavaScript to your view by updating the `script` tag in `index.html`.  Get a sanity check log message from your `app.js` to appear in your browser dev tools console.
 
-1. Reconnect the client-side CSS to your view by updating the `link` tag in `index.html`. Get the css styles in `styles.css` working again on the index page.
+3. Reconnect the client-side CSS to your view by updating the `link` tag in `index.html`. Get the css styles in `styles.css` working again on the index page.
 
-1. Reconnect the client-side images to your view by updating `index.html` and `styles.css`. You should see the images again once this is working.
+4. Reconnect the client-side images to your view by updating `index.html` and `styles.css`. You should see the images again once this is working.
 
-1. If you still have errors when you visit  `localhost:3000`, try to diagnose them, check the solutions, or ask for help.
+5. If you still have errors when you visit  `localhost:3000`, try to diagnose them, check the solutions, or ask for help.
 
 
 ## Step 4: Setting up database file structure.
@@ -108,7 +110,7 @@ Time to prepare a file structure for pulling data from an API!
 
 1. Create a  `models` directory, a `models/index.js` file, and a `models/album.js` file.
 
-1. In `models/index.js`, require mongoose and connect to a database for the tunely app.
+2. In `models/index.js`, require mongoose and connect to a database for the tunely app.
 
   <details><summary>click to see a code reminder</summary>
   ```js
@@ -118,9 +120,9 @@ Time to prepare a file structure for pulling data from an API!
   ```
   </details>
 
-1. In `models/album.js`, require mongoose and, if you'd like, set up a shorthand `Schema` variable to stand in for `mongoose.Schema`.
+3. In `models/album.js`, require mongoose and, if you'd like, set up a shorthand `Schema` variable to stand in for `mongoose.Schema`.
 
-1. Require the `models` directory in `server.js`.  We've usually been importing the models directory as a variable called `db`.  
+4. Require the `models` directory in `server.js`.  We've usually been importing the models directory as a variable called `db`.  
 
 
 ## Step 5: Setting up a "controller" pattern to organize routes.
@@ -141,8 +143,7 @@ You've already been using Node.js's modules to bring code for database models in
   - a `controllers/apiController.js` file, and
   - a `controllers/albumsController.js` file.
 
-
-1. Inside `controllers/apiController.js`, add the following code:
+2. Inside `controllers/apiController.js`, add the following code:
 
   ```js
   // controllers/apiController.js
@@ -162,7 +163,7 @@ You've already been using Node.js's modules to bring code for database models in
 
   > Look over the structure of this code. Given your experience with Express servers, how do you think this code will be used?
 
-1. We need to get access to that code in the server file.  After creating your `index` function in `controllers/apiController.js`, export it as part of the module's exports:
+3. We need to get access to that code in the server file.  After creating your `index` function in `controllers/apiController.js`, export it as part of the module's exports:
   ```js
   // controllers/apiController.js
   module.exports = {
@@ -170,7 +171,7 @@ You've already been using Node.js's modules to bring code for database models in
   }
   ```
 
-1. Like with models, our controllers module has an `index.js` to collect the various controllers.  Inside `controllers/index.js`, require the code from `controllers/apiController.js` and then export it as part of an object:
+4. Like with models, our controllers module has an `index.js` to collect the various controllers.  Inside `controllers/index.js`, require the code from `controllers/apiController.js` and then export it as part of an object:
 
   ```js
   // controllers/index.js
@@ -180,14 +181,14 @@ You've already been using Node.js's modules to bring code for database models in
   ```
 
 
-1. In `server.js`, add a line that `require`s the `controllers` directory.  Save the result in a variable called `controllers`.
+5. In `server.js`, add a line that `require`s the `controllers` directory.  Save the result in a variable called `controllers`.
 
   ```js
   //server.js
   var controllers = require('./controllers');
   ```
 
-1. Also in `server.js`, create a new route for `GET /api`.  Based on the controller pattern we've built, this route's callback can be `controllers.api.index`.
+6. Also in `server.js`, create a new route for `GET /api`.  Based on the controller pattern we've built, this route's callback can be `controllers.api.index`.
 
   ```js
   // server.js
@@ -201,6 +202,7 @@ You've already been using Node.js's modules to bring code for database models in
 1. In `controllers/albumsController.js`, add a skeleton where you'll create and export the request handler callbacks for each albums API route. That is, add the following code:
 
   <details><summary>click to expand</summary>
+
   ```js
   // controllers/albumsController.js
   // GET /api/albums
@@ -229,9 +231,10 @@ You've already been using Node.js's modules to bring code for database models in
     // and send it back as JSON
   }
   ```
+
   </details>
 
-1. Also, after the function definitions, add each function to the `exports` object for this module:
+2. Also, after the function definitions, add each function to the `exports` object for this module:
 
   ```js
   // controllers/albumsController.js
@@ -244,15 +247,16 @@ You've already been using Node.js's modules to bring code for database models in
   };
   ```
 
-1. Using `controllers/apiController.js` as an example, require the exported information from `controllers/albumsController.js` in `controllers/index.js`.
+3. Using `controllers/apiController.js` as an example, require the exported information from `controllers/albumsController.js` in `controllers/index.js`.
 
-1. Also, add that information to the exports for `controllers/index.js` by creating a new `albums` key in the exports object that already has the `api` key.
+4. Also, add that information to the exports for `controllers/index.js` by creating a new `albums` key in the exports object that already has the `api` key.
 
 ## Continuity Step: Baby steps toward database.
 
 1. We don't have the database set up yet, but we can start thinking about some data. Purely for continuity with later sprints, add the following starter album information at the top of  `controllers/albumsController.js`:
 
   <details><summary>click to expand</summary>
+
   ```js
   // controllers/albumsController.js
   var albums = [];
@@ -285,11 +289,13 @@ You've already been using Node.js's modules to bring code for database models in
                 genres: [ 'country', 'rock' ]
               });
   ```
+
   </details>
 
-1. Also for continuity with later sprints, create a `seed.js` file in the base directory of your project. Add the following code to it:
+2. Also for continuity with later sprints, create a `seed.js` file in the base directory of your project. Add the following code to it:
 
   <details><summary>click to expand</summary>
+
   ```js
   //seed.js
 
@@ -310,6 +316,7 @@ You've already been using Node.js's modules to bring code for database models in
     });
   });
   ```
+
   </details>
 
 
