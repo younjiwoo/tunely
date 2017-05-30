@@ -38,7 +38,7 @@ sampleAlbums.push({
 
 
 $(document).ready(function() {
-  console.log('app.js loaded!');
+  console.log('app.js loaded! sanity check.');
 });
 
 
