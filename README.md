@@ -56,7 +56,7 @@ This lab begins with a basic front-end to display a list of music albums.  As we
 
 ### Project Planning and Approach
 
-####Planning
+#### Planning
 
 When working on large projects, it's important to do a good amount of planning and whiteboarding before you start coding.  
 
