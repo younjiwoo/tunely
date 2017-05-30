@@ -26,7 +26,7 @@ Let's start on the outside and work our way in.
 
   <details><summary>hint</summary>
 
-  You'll need to replace the hardcoded sample data with appropriate attribute placeholders.  (You can find the correct attributes in the array of objects provided in `app.js`.) Remember the template string syntax for a variable whose value will be inserted later: ``\`${variableName}\``.
+  You'll need to replace the hardcoded sample data with appropriate attribute placeholders.  (You can find the correct attributes in the array of objects provided in `app.js`.) Remember the template string syntax for a variable whose value will be inserted later: `` `${variableName}` ``.
 
   </details>
 
@@ -158,7 +158,7 @@ We'll use the module pattern to make these "controller" functions available in t
 1. Require the `Album` model in `models/index.js`.  Then add it into the `exports` object for `models/index.js`. Inside the `exports` object, the key should be "Album" and the value should be the `Album` model.
 
 
-  <details><summary>click to see a completed `models/albums.js`</summary>
+  <details><summary>click to see a completed models/albums.js</summary>
 
   ```js
   //models/album.js
@@ -176,7 +176,7 @@ We'll use the module pattern to make these "controller" functions available in t
 
   </details>
 
-  <details><summary>click to see a completed `models/index.js`</summary>
+  <details><summary>click to see a completed models/index.js</summary>
 
   ```js
   module.exports.Album = require("./album.js");
@@ -197,7 +197,7 @@ We'll use the module pattern to make these "controller" functions available in t
 
 1. Resolve any errors you encounter.
 
-<details><summary>hint: `error connect ECONNREFUSED`</summary>
+<details><summary>hint: <code>error connect ECONNREFUSED</code></summary>
 If you see an error like:
 
 ```
@@ -222,7 +222,7 @@ Now that the database is seeded, let's transition to using the database in our `
 
 1. Verify that you're getting the right data on your home page now.  Your AJAX should still work. If the attribute names in the data have changed at all, you'll have to resolve that.
 
-<details><summary>hint: requiring `./models`</summary>
+<details><summary>hint: requiring ./models</summary>
 
 ```js
 var db = require('./models');
