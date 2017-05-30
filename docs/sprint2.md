@@ -30,7 +30,7 @@ This sprint we will:
   name=Marble+House&artistName=The+Knife&releaseDate=2006&genres=electronica%2C+synth+pop%2C+trip+hop
   ```
 
-1. Reset the form input values after the data from the form has been captured or used.
+2. Reset the form input values after the data from the form has been captured or used.
 
 ## Step 3: A Route for Creating Albums
 
@@ -44,9 +44,9 @@ POST  /api/albums
 
   > Don't forget to export the `create` function from the controller, or it won't be accessible in `server.js`.
 
-1. If you haven't yet, add the `body-parser` middleware to the server. Remember save `body-parser` into your project's dependencies when you install it.
+2. If you haven't yet, add the `body-parser` middleware to the server. Remember save `body-parser` into your project's dependencies when you install it.
 
-1. You can test your new route by using AJAX (from your browser's JavaScript console), curl, or Postman.
+3. You can test your new route by using AJAX (from your browser's JavaScript console), curl, or Postman.
 
 curl (from Terminal):
 ```bash
