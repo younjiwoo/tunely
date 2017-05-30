@@ -24,11 +24,15 @@ Let's start on the outside and work our way in.
 
 1. Open `index.html` in your text editor and find the HTML for an **album**.  This is a hard-coded sample set up for you to show the desired HTML structure.  Convert this into a template string using the data structure shown in the array of albums from `app.js`. Leave the `div` with class `albums` in place.
 
-  <details><summary>hint</summary>You'll need to replace the hardcoded sample data with appropriate attribute placeholders.  (You can find the correct attributes in the array of objects provided in `app.js`.) Remember the template string syntax for a variable whose value will be inserted later: ``\`${variableName}\``. </details>
+  <details><summary>hint</summary>
 
-1. Open `app.js` and edit the function `renderAlbum` to display one album on the page.  Use your HTML template string and jQuery.
+  You'll need to replace the hardcoded sample data with appropriate attribute placeholders.  (You can find the correct attributes in the array of objects provided in `app.js`.) Remember the template string syntax for a variable whose value will be inserted later: ``\`${variableName}\``.
 
-1. Run the `renderAlbum` function when the DOM is ready, and pass in `sampleAlbums[0]` (just one album) to test.  Verify that the page still looks like it did initially.
+  </details>
+
+2. Open `app.js` and edit the function `renderAlbum` to display one album on the page.  Use your HTML template string and jQuery.
+
+3. Run the `renderAlbum` function when the DOM is ready, and pass in `sampleAlbums[0]` (just one album) to test.  Verify that the page still looks like it did initially.
 
   <details><summary>hint: calling `renderAlbum`</summary>
 
@@ -38,6 +42,7 @@ Let's start on the outside and work our way in.
     renderAlbum(sampleAlbums[0]);
   });
   ```
+
   </details>
 
 
@@ -47,7 +52,7 @@ Let's start on the outside and work our way in.
 
   At this point you should see all the hard-coded albums from `app.js`'s `sampleAlbums` rendered on page.
 
-1. Now, we're going to break this piece of code again, with the intention of fixing it by improving our server side routes. **Add an AJAX call** that will GET all of the albums from the path `/api/albums`. Upon a successful response from the server, this AJAX call should render the data to the page. 
+2. Now, we're going to break this piece of code again, with the intention of fixing it by improving our server side routes. **Add an AJAX call** that will GET all of the albums from the path `/api/albums`. Upon a successful response from the server, this AJAX call should render the data to the page.
 
 <details><summary>Click to see how to request and render all of the albums with a template string</summary>
 
@@ -109,6 +114,7 @@ function renderAlbum(album) {
 };
 
 ```
+
 </details>
 
 Because the GET `/api/albums` route isn't configured yet, our site won't display data anymore. You should now see an error in your console:
