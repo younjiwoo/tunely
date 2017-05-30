@@ -47,9 +47,11 @@ A front-end skeleton is already in place (you can view it directly from your fil
 2. Install and save `express`, `body-parser`, and `mongoose` Node.js packages.  
 
   <details><summary>click for code to run in terminal</summary>
+
   ```bash
   npm install --save express body-parser mongoose
   ```
+  
   </details>
 
   > Confirm that the packages have been saved as dependencies in your `package.json`.
